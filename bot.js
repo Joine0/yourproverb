@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const fs = require('fs');
 client.on('ready', () => {
 console.log('Logging into discord..');
 console.log(`
@@ -98,10 +97,6 @@ client.on("message", message => {
       .setColor("RANDOM")
       .setThumbnail(message.author.avatarURL)
       .setDescription(` 
-R-antilinks ⇏ لتفعيل مانع الروابط 
-R-antilinks message ⇏ لتغيير رسآلة التحذير عند النشر
-R-join ⇏ لتفعيل الوضع الخاص بحيث ان البوت لا يسمح بدخول أحد إلى السيرفر
-R-join message ⇏ لتغيير رسآلة الوضع الخاص 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 R-inv ⇏  لدعوة آلبوت لسيرفرك
 R-uptime ⇏  لرؤيةة مدة تشغيل البوت
@@ -732,127 +727,7 @@ client.on('message', message => {
 }
 });
 
- let lin = JSON.parse(fs.readFileSync(`./antilinks.json`, `utf8`))
-
-client.on('message', message => { 
-                              if(!message.channel.guild) return;
-
-if(!message.guild) return;
-
-if(!lin[message.guild.id]) lin[message.guild.id] = {
-  linn: '**يمنع ارسال الانفايتات بهذا السيرفر!**',
-  onoff: 'On'
-}
-
-
-var prefix = "R-"
-if(message.author.bot) return;
-if(message.content.startsWith(`${prefix}antilinks`)) {
-  if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-  let args = message.content.split(' ').slice(1)
-  let state = args[0]
-  if(!args.join(" ")) return message.channel.send(`للتفعيل أكتب __${prefix}antilinks toggle__
-  لإيقآف مانع الروابط كرر هذا الأمر`);
-  if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'message') return message.reply(`يجب تغيير الرساله`)
-  if(state.trim().toLowerCase() == 'toggle') {
-    if(lin[message.guild.id].onoff === 'On') return [message.channel.send(`** تم تفعيل مانع الروابط **`), lin[message.guild.id].onoff = 'Off']
-    if(lin[message.guild.id].onoff === 'Off') return [message.channel.send(`** تم إيقآف مانع الروابط **`), lin[message.guild.id].onoff = 'On']
-  }
-  if(state.trim().toLowerCase() == 'message') {
-    let messagei = message.content.split(' ').slice(2).join(' ')
-    if(!messagei) return message.reply(`الرجاء وضع الرسآلة المراد تعيينهآ`)
-    lin[message.guild.id].linn = messagei;
-    
-message.channel.send(`**${messagei} تم تحديث الرسآلة **`)
-  }
-}
-
-
-
-
-
-  fs.writeFile(`./antilinks.json`, JSON.stringify(lin), (err) => {
-        if (err) console.error(err)
-      });
-
-})
-
-client.on('message', message => {
-    if(!message.guild) return;
-if(!lin[message.guild.id]) lin[message.guild.id] = {
-  linn: '**يمنع ارسال الانفايتات بهذا السيرفر!**',
-  onoff: 'Off'
-}
-     if(lin[message.guild.id].onoff === 'Off') {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('discord.gg')){
-        if(message.author.bot) return;
-        message.delete()
-    message.reply(lin[message.guild.id].linn).then(msg => msg.delete(5000));
-    }
-
-}
-
-});
-
- let me = JSON.parse(fs.readFileSync(`./join.json`, `utf8`))
-
-client.on('message', message => { 
-                              if(!message.channel.guild) return;
-
-if(!message.guild) return;
-
-if(!me[message.guild.id]) me[message.guild.id] = {
-  linn: '**يمنع ارسال الانفايتات بهذا السيرفر!**',
-  onoff: 'On'
-}
-
-
-var prefix = "R-"
-if(message.author.bot) return;
-if(message.content.startsWith(`${prefix}join`)) {
-  if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-  let args = message.content.split(' ').slice(1)
-  let state = args[0]
-  if(!args.join(" ")) return message.channel.send(`للتفعيل أكتب __${prefix}join toggle__
-  لإيقآف الوضع الخاص كرر هذا الأمر`);
-  if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'message') return message.reply(`يجب تغيير الرساله`)
-  if(state.trim().toLowerCase() == 'toggle') {
-    if(me[message.guild.id].onoff === 'On') return [message.channel.send(`** تم تفعيل الوضع الخاص  **`),  me[message.guild.id].onoff = 'Off']
-    if(me[message.guild.id].onoff === 'Off') return [message.channel.send(`** تم إيقآف الوضع الخاص  **`), me[message.guild.id].onoff = 'On']
-  }
-  if(state.trim().toLowerCase() == 'message') {
-    let messagei = message.content.split(' ').slice(2).join(' ')
-    if(!messagei) return message.reply(`الرجاء وضع الرسآلة المراد تعيينهآ`)
-    me[message.guild.id].linn = messagei;
-    
-message.channel.send(`**${messagei} تم تحديث الرسآلة **`)
-  }
-}
-
-
-
-
-
-  fs.writeFile(`./join.json`, JSON.stringify(me), (err) => {
-        if (err) console.error(err);
-      });
-
-});
-
-client.on('guildMemberAdd', member => {
-    if(!member.guild) return;
-if(!me[member.guild.id]) me[member.guild.id] = {
-  linn: '** حآول الدخول **',
-  onoff: 'Off'
-};
-     if(me[member.guild.id].onoff === 'Off') {
-  member.guild.kick();
-        member.delete();
-    member.reply(me[member.guild.id].linn).then(msg => msg.delete(5000));
-     }
-});
-
+ 
 
 var prefix = 'R-';
 
