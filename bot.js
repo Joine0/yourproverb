@@ -67,31 +67,6 @@ client.on("message", message => {
       .setThumbnail(message.author.avatarURL)
       .setDescription(` 
    ** بوت R أوآمر **
-R-v2 ⇏ لإنشاء روم صوتي لمدة دقيقتين
-R-v4 ⇏ لإنشاء روم صوتي لمدة 4 دقائق 
-R-c2 ⇏ لإنشاء روم كتابي لمدة دقيقتين
-R-c4 ⇏ لإنشاء روم كتابي لمدة 4 دقائق
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-R-inv ⇏  لدعوة آلبوت لسيرفرك
-R-sug  ⇏  لإرسآل أقترآح لمبرمج آلبوت
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-أو من خلال الرابط التالي :
-https://discordapp.com/api/oauth2/authorize?client_id=423917382474399756&permissions=268528752&scope=bot
-`);
-
-
-message.channel.sendEmbed(embed)
-
-}
-}); 
-client.on("message", message => {
- if (message.content === "R-help") {
-
-  const embed = new Discord.RichEmbed() 
-      .setColor("RANDOM")
-      .setThumbnail(message.author.avatarURL)
-      .setDescription(` 
-   ** بوت R أوآمر **
 R-Build R ⇏ لأنشآء رومات كتابيه وصوتيه
 R-Build Rr ⇏ لأنشآء رتب
 R-cv ⇏ لإنشاء روم صوتي  
@@ -108,6 +83,20 @@ R-Ch ⇏ لإنشآء روم ساعة وتاريخ وأعدآد الأعضآء
 R-Ch ac ⇏ لتفعيل روم الساعة والتاريخ والاعضاء
 R-delete ro ⇏ لحذف جميع الرتب بشرط رتبة البوت فوق الرتب المراد حذفها
 R-delete vc ⇏ لحذف جميع الرومات الصوتية والكتابيةة
+`);
+
+
+message.channel.sendEmbed(embed)
+
+}
+}); 
+client.on("message", message => {
+ if (message.content === "R-help") {
+
+  const embed = new Discord.RichEmbed() 
+      .setColor("RANDOM")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(` 
 R-antilinks ⇏ لتفعيل مانع الروابط 
 R-antilinks message ⇏ لتغيير رسآلة التحذير عند النشر
 R-join ⇏ لتفعيل الوضع الخاص بحيث ان البوت لا يسمح بدخول أحد إلى السيرفر
