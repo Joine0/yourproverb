@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-bot.on('ready', () => {
+client.on('ready', () => {
 console.log('Logging into discord..');
 console.log(`
 Login successful.
