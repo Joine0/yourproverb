@@ -60,7 +60,7 @@ message.channel.sendEmbed(embed)
 }
 }); 
 client.on("message", message => {
- if (message.content === "R-helpvc") {
+ if (message.content === "R-help") {
 
   const embed = new Discord.RichEmbed() 
       .setColor("RANDOM")
