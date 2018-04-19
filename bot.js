@@ -30,7 +30,7 @@ client.on("message", message => {
         return process.exit(1);
     }
 });
-///restartbot///
+///restartbot///stopbot
 client.on("message", message => {
     if(message.author.id !== "274923685985386496") return;
 
