@@ -60,7 +60,7 @@ message.channel.sendEmbed(embed)
 }
 }); 
 client.on("message", message => {
- if (message.content === "R-help") {
+ if (message.content === "R-helيييييييببp") {
 
   const embed = new Discord.RichEmbed() 
       .setColor("RANDOM")
@@ -97,6 +97,23 @@ client.on("message", message => {
       .setColor("RANDOM")
       .setThumbnail(message.author.avatarURL)
       .setDescription(` 
+   ** بوت R أوآمر **
+R-Build R ⇏ لأنشآء رومات كتابيه وصوتيه
+R-Build Rr ⇏ لأنشآء رتب
+R-cv ⇏ لإنشاء روم صوتي  
+R-ct ⇏ لإنشاء روم كتابي
+R-dvc ⇏ لحذف الروم صوتي أم كتآبي
+R-v2 ⇏ لإنشاء روم صوتي لمدة دقيقتين
+R-v4 ⇏ لإنشاء روم صوتي لمدة 4 دقائق 
+R-c2 ⇏ لإنشاء روم كتابي لمدة دقيقتين
+R-c4 ⇏ لإنشاء روم كتابي لمدة 4 دقائق
+R-cr1 ⇏ إنشآء 50 لون مرتب
+R-cr2 ⇏ إنشآء 100 لون مرتب
+R-cr3 ⇏ إنشاء 130 لون مرتب
+R-Ch ⇏ لإنشآء روم ساعة وتاريخ وأعدآد الأعضآء
+R-Ch ac ⇏ لتفعيل روم الساعة والتاريخ والاعضاء
+R-delete ro ⇏ لحذف جميع الرتب بشرط رتبة البوت فوق الرتب المراد حذفها
+R-delete vc ⇏ لحذف جميع الرومات الصوتية والكتابيةة
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 R-inv ⇏  لدعوة آلبوت لسيرفرك
 R-uptime ⇏  لرؤيةة مدة تشغيل البوت
